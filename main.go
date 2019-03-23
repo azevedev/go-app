@@ -7,6 +7,21 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+func newTex(renderer *sdl.Renderer, file string) *sdl.Texture {
+	img, err := sdl.LoadBMP(file)
+	if err != nil {
+		panic(fmt.Errorf("Loading file BMP %v: %v", file, err))
+	}
+
+	tex, err := renderer.CreateTextureFromSurface(img)
+	if err != nil {
+		panic(fmt.Errorf("Creating texture %v: %v", file, err))
+	}
+
+	img.Free()
+
+	return tex
+}
 func main() {
 
 	err := sdl.Init(sdl.INIT_EVERYTHING)
@@ -33,8 +48,22 @@ func main() {
 		fmt.Println("Erro em newPlayer: ", err)
 		return
 	}
+	var enemies []enemy
+	for i := 0; i < 8; i++ {
+		for j := 0; j < 6; j++ {
+			x := (float64(i) / 5) * 600
+			x += 42
+			y := float64(j * 30)
+			y += 100
+			enemy, err := newEnemy(renderer, x, y)
+			if err != nil {
+				fmt.Println("erro em newEnemy: ", err)
+			}
 
-	enemy, err := newEnemy(renderer, 300, 300)
+			enemies = append(enemies, enemy)
+		}
+	}
+	//enemy, err := newEnemy(renderer, 300, 300)
 	if err != nil {
 		fmt.Println("Erro em newEnemy: ", err)
 		return
@@ -53,8 +82,11 @@ func main() {
 		renderer.SetDrawColor(255, 255, 255, 255)
 		player1.draw(renderer)
 		player1.update()
-		enemy.draw(renderer)
-		enemy.update()
+		for _, enemy := range enemies {
+			enemy.draw(renderer)
+			enemy.update()
+		}
+
 		renderer.Present()
 	}
 
