@@ -34,7 +34,7 @@ func main() {
 		return
 	}
 
-	enemy, err := newEnemy(renderer, 200, 300)
+	enemy, err := newEnemy(renderer, 300, 300)
 	if err != nil {
 		fmt.Println("Erro em newEnemy: ", err)
 		return
