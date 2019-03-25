@@ -55,7 +55,7 @@ func main() {
 			enemies = append(enemies, enemy)
 		}
 	}
-	//enemy, err := newEnemy(renderer, 300, 300)
+	//enemy := newEnemy(renderer, 300, 300)
 	if err != nil {
 		fmt.Println("Erro em newEnemy: ", err)
 		return
@@ -72,8 +72,18 @@ func main() {
 
 		renderer.Clear()
 		renderer.SetDrawColor(255, 255, 255, 255)
-		player1.draw(renderer)
-		player1.update()
+		err := player1.draw(renderer)
+		if err != nil{
+			fmt.Println("Drawning player: ", err)
+			return
+		}
+
+		err = player1.update()
+		if err != nil {
+			fmt.Println("Updating player: ", err)
+			return
+		}
+
 		for _, enemy := range enemies {
 			enemy.draw(renderer)
 			enemy.update()

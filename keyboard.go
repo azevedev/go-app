@@ -34,6 +34,7 @@ func (p *platform) onUpdate() error {
 	} else if keys[sdl.SCANCODE_DOWN] == 1 {
 		cont.position.y += p.speed
 	}
+	return nil
 }
 
 func(p *platform) onCollision() error{

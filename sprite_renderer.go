@@ -18,6 +18,9 @@ func newSpriteRenderer(cont *entity, renderer *sdl.Renderer, filename string) *s
 }
 func (sr *spriteRenderer) onDraw(renderer *sdl.Renderer) error{
 	_, _, width, height, err := sr.tex.Query()
+	if err != nil{
+		return err
+	}
 	x := sr.container.position.x - float64(width/2.0)
 	y := sr.container.position.y - float64(height/2.0)
 	renderer.CopyEx(
