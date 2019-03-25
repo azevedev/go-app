@@ -13,21 +13,7 @@ const(
 	playerSize = 1
 )
 
-func newTex(renderer *sdl.Renderer, file string) *sdl.Texture {
-	img, err := sdl.LoadBMP(file)
-	if err != nil {
-		panic(fmt.Errorf("Loading file BMP %v: %v", file, err))
-	}
 
-	tex, err := renderer.CreateTextureFromSurface(img)
-	if err != nil {
-		panic(fmt.Errorf("Creating texture %v: %v", file, err))
-	}
-
-	img.Free()
-
-	return tex
-}
 func main() {
 
 	err := sdl.Init(sdl.INIT_EVERYTHING)
