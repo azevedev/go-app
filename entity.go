@@ -24,9 +24,20 @@ type entity struct{
 }
 
 func (ent *entity) addComponent(new component){
-	for _, e := range ent.components{
-		if reflect.TypeOf(new) == reflect.TypeOf(e){
+	for _, c := range ent.components{
+		if reflect.TypeOf(new) == reflect.TypeOf(c){
 			panic(fmt.Sprintf("Erro em addComponent!"))
 		}
 	}
+	ent.components = append(ent.components, new)
+}
+
+func (ent *entity) getComponent(c component) component{
+	typeC := reflect.TypeOf(c)
+	for _, comp := range ent.components{
+		if reflect.TypeOf(comp) == typeC {
+			return c 
+		}
+	}
+	panic(fmt.Sprintf("Erro em getComponent!"))
 }
