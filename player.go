@@ -15,6 +15,15 @@ type player struct {
 	h, w, frame int32
 }
 
+func newPlayer(renderer *sdl.Renderer) *entity{
+	player := &entity{}
+	player.position.x = screenW/2.0
+	player.position.y = screenH/2.0
+	player.active = true
+	
+	
+}
+
 func newPlayer(renderer *sdl.Renderer) (p player) {
 	p.tex = newTex(renderer, "res/slime.bmp")
 

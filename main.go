@@ -7,6 +7,12 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
+const(
+	screenW = 800
+	screenH = 600
+	playerSize = 1
+)
+
 func newTex(renderer *sdl.Renderer, file string) *sdl.Texture {
 	img, err := sdl.LoadBMP(file)
 	if err != nil {
@@ -30,7 +36,7 @@ func main() {
 		return
 	}
 
-	w, err := sdl.CreateWindow("GAME", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, 800, 600, sdl.WINDOW_OPENGL)
+	w, err := sdl.CreateWindow("GAME", sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, screenW, screenH, sdl.WINDOW_OPENGL)
 	if err != nil {
 		fmt.Println("Erro em CreateWindow: ", err)
 		return

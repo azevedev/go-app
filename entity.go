@@ -5,8 +5,8 @@ import(
 	"reflect"
 	"github.com/veandco/go-sdl2/sdl"
 )
-type position struct{
-	x,t float64
+type pos struct{
+	x,y float64
 }
 
 type component interface{
@@ -17,7 +17,7 @@ type component interface{
 }
 
 type entity struct{
-	pos position
+	position pos
 	rotation float64
 	active bool
 	components []component
