@@ -43,7 +43,7 @@ func main() {
 		return
 	}
 
-	player1, err := newPlayer(renderer)
+	player1 := newPlayer(renderer)
 	if err != nil {
 		fmt.Println("Erro em newPlayer: ", err)
 		return
@@ -55,7 +55,7 @@ func main() {
 			x += 42
 			y := float64(j * 30)
 			y += 100
-			enemy, err := newEnemy(renderer, x, y)
+			enemy := newEnemy(renderer, x, y)
 			if err != nil {
 				fmt.Println("erro em newEnemy: ", err)
 			}
