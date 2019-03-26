@@ -34,12 +34,12 @@ func main() {
 		return
 	}
 
-	player1 := newPlayer(renderer)
+	enteties = append(enteties, newPlayer(renderer))
 	if err != nil {
 		fmt.Println("Erro em newPlayer: ", err)
 		return
 	}
-	var enteties []*entity
+
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 6; j++ {
 			x := (float64(i) / 5) * 600
@@ -71,21 +71,26 @@ func main() {
 
 		renderer.Clear()
 		renderer.SetDrawColor(255, 255, 255, 255)
-		err := player1.draw(renderer)
-		if err != nil {
-			fmt.Println("Drawning player: ", err)
-			return
-		}
-
-		err = player1.update()
-		if err != nil {
-			fmt.Println("Updating player: ", err)
-			return
-		}
 
 		for _, ent := range enteties {
-			ent.draw(renderer)
-			ent.update()
+			if ent.active {
+				if err := ent.draw(renderer); err != nil {
+					fmt.Println("Erro em draw: ", err)
+					return
+				}
+
+				if err := ent.update(); err != nil {
+					fmt.Println("Erro em update: ", err)
+					return
+				}
+			}
+		}
+
+		for _, bull := range bullets {
+			if bull.active {
+				bull.draw(renderer)
+				bull.update()
+			}
 		}
 
 		renderer.Present()

@@ -4,20 +4,31 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type bullet struct {
-	tex  *sdl.Texture
-	x, y float64
-	size int32
-}
+func newBullet(renderer *sdl.Renderer) *entity {
+	bul := &entity{}
+	sr := newSpriteRenderer(bul, renderer, "res/bu1llet.bmp")
+	bul.addComponent(sr)
 
-func newBullet(renderer *sdl.Renderer) (bul bullet) {
-	bul.tex = newTex(renderer, "res/bullet.bmp")
-	bul.size = 14
+	bm := newBulletMove(bul, 0.2)
+	bul.addComponent(bm)
+	bul.active = false
 	return bul
 }
 
-func (b *bullet) draw(renderer *sdl.Renderer) {
-	x := b.x - 16
-	y := b.y - 20
-	renderer.Copy(b.tex, &sdl.Rect{0, 0, b.size, b.size}, &sdl.Rect{int32(x), int32(y), b.size, b.size})
+var bullets []*entity
+
+func InitBullet(renderer *sdl.Renderer) {
+	for i := 0; i < 20; i++ {
+		bul := newBullet(renderer)
+		bullets = append(bullets, bul)
+	}
+}
+
+func getBullet() (*entity, bool) {
+	for _, bul := range bullets {
+		if !bul.active {
+			return bul, true
+		}
+	}
+	return nil, false
 }

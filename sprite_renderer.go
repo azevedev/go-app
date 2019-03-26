@@ -1,46 +1,48 @@
 package main
 
-import(
+import (
 	"fmt"
+
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type spriteRenderer struct{
+type spriteRenderer struct {
 	container *entity
-	tex *sdl.Texture
-
+	tex       *sdl.Texture
 }
 
-func newSpriteRenderer(cont *entity, renderer *sdl.Renderer, filename string) *spriteRenderer{
+func newSpriteRenderer(cont *entity, renderer *sdl.Renderer, filename string) *spriteRenderer {
 	return &spriteRenderer{
 		container: cont,
-		tex: newTex(renderer, filename)}
+		tex:       newTex(renderer, filename)}
 }
-func (sr *spriteRenderer) onDraw(renderer *sdl.Renderer) error{
+
+func (sr *spriteRenderer) onDraw(renderer *sdl.Renderer) error {
 	_, _, width, height, err := sr.tex.Query()
-	if err != nil{
-		return err
+	if err != nil {
+		return fmt.Errorf("querying texture: %v", err)
 	}
-	x := sr.container.position.x - float64(width/2.0)
-	y := sr.container.position.y - float64(height/2.0)
+
+	x := sr.container.position.x - float64(width)/2.0
+	y := sr.container.position.y - float64(height)/2.0
 	renderer.CopyEx(
-		sr.tex, 
-		nil, 
-		&sdl.Rect{int32(x), int32(y), width, height}, 
+		sr.tex,
+		&sdl.Rect{0, 0, width, height},
+		&sdl.Rect{int32(x), int32(y), width, height},
 		sr.container.rotation,
-		&sdl.Point{width/2, height/2},
+		&sdl.Point{width / 2, height / 2},
 		sdl.FLIP_NONE)
 
 	return nil
 }
 
-func (sr *spriteRenderer) onUpdate() error{
+func (sr *spriteRenderer) onUpdate() error {
 	return nil
 }
-func (sr *spriteRenderer) onCollision() error{
+func (sr *spriteRenderer) onCollision() error {
 	return nil
 }
-func (sr *spriteRenderer) onDestroy() error{
+func (sr *spriteRenderer) onDestroy() error {
 	return nil
 }
 
