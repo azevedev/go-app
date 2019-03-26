@@ -7,12 +7,11 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-const(
-	screenW = 800
-	screenH = 600
+const (
+	screenW    = 800
+	screenH    = 600
 	playerSize = 1
 )
-
 
 func main() {
 
@@ -40,19 +39,19 @@ func main() {
 		fmt.Println("Erro em newPlayer: ", err)
 		return
 	}
-	var enemies []enemy
+	var enteties []*entity
 	for i := 0; i < 8; i++ {
 		for j := 0; j < 6; j++ {
 			x := (float64(i) / 5) * 600
 			x += 42
 			y := float64(j * 30)
 			y += 100
-			enemy := newEnemy(renderer, x, y)
+			enemy := newEnemy(renderer, x, y, 0)
 			if err != nil {
 				fmt.Println("erro em newEnemy: ", err)
 			}
 
-			enemies = append(enemies, enemy)
+			enteties = append(enteties, enemy)
 		}
 	}
 	//enemy := newEnemy(renderer, 300, 300)
@@ -73,7 +72,7 @@ func main() {
 		renderer.Clear()
 		renderer.SetDrawColor(255, 255, 255, 255)
 		err := player1.draw(renderer)
-		if err != nil{
+		if err != nil {
 			fmt.Println("Drawning player: ", err)
 			return
 		}
@@ -84,9 +83,9 @@ func main() {
 			return
 		}
 
-		for _, enemy := range enemies {
-			enemy.draw(renderer)
-			enemy.update()
+		for _, ent := range enteties {
+			ent.draw(renderer)
+			ent.update()
 		}
 
 		renderer.Present()
