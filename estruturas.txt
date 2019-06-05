@@ -1,0 +1,42 @@
+//App - Educação financeira
+Usuario() {
+	Id()
+	Renda_mensal()
+	Idade()
+	Nome()
+	Perfil_investimento()
+}
+
+Previdencia() {
+	Get_Renda()
+	Get_Idade()
+	Get_Investimento_em_previdencia_mensal()
+	Get_Idade_aposentadoria()
+	Get_Salario_aposentadoria()
+	//Previsao_aposentadoria
+	Calcula_Salario_aposentadoria()
+	Calcula_Idade_aposentadoria() 
+	Calculo_Investimento_em_previdencia_mensal()
+}
+
+Investimentos() {
+	Get_perfil()
+	Calculo_poupanca()
+}
+
+Despesas() {
+	Manutenção_Veiculo()
+	Manutenção_do_Próprio_Custo_de_Vida()
+	Custo_das_despesas_com_filhos()
+}
+
+Simulador_usuarios() {
+	Cria_usuario()
+	Random_atributes()
+	Random_consultas()
+}
+
+Controlador() {
+	Concurrency()
+	Interface()
+}
