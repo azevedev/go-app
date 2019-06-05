@@ -20,7 +20,16 @@ Previdencia() {
 }
 
 Investimentos() {
-	Get_perfil()
+	Get_perfil_de_investidor()
+	Fundos_de_Investimento()
+	LCI()
+	LCA()
+	LC()
+	CDB()
+	Acoes_Escriturais()
+	Saldo_bruto_total()
+	Rentabilidade_da_carteira()
+	Simulador_de_investimento()
 	Calculo_poupanca()
 }
 
