@@ -21,9 +21,9 @@ func random_atributes(users *[]Usuario){
 	for i := 0; i < len(*users); i++{
 		
 		(*users)[i].id = -1 //número de controle para diferenciarmos usuários reais de usuários simulados
-		(*users)[i].nome = randomdata.FullName(randomdata.RandomGender)  
-		(*users)[i].idade = r1.Intn(30) + 18
-		(*users)[i].renda = float64(int(((r1.Float64() * 5000) + 100) * 100)) / 100 //Ess codigo gigante é para deixar a renda com 2 casas decimais
+		(*users)[i].nome = randomdata.FullName(randomdata.RandomGender) //gera um nome aleatório
+		(*users)[i].idade = r1.Intn(30) + 18 //gera uma idade aleatória
+		(*users)[i].renda = float64(int(((r1.Float64() * 5000) + 100) * 100)) / 100 //código para deixar a 'renda' com 2 casas decimais
 		pf := ""
 		try := r1.Intn(3)+1
 		switch(try){
