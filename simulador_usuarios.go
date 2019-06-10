@@ -53,43 +53,103 @@ func random_queries(users *[]Usuario){
 	s1 := rand.NewSource(time.Now().UnixNano())
  	r1 := rand.New(s1)
 	for i := 0; i < len(*users); i++{
-		r := r1.Intn(11) + 1
+		r := r1.Intn(11)
+		uid := *(users)[i].id
 		switch(r){
 		 case 00:
-		 	//Calcula_Salario_aposentadoria(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		Calcula_Salario_aposentadoria(uid)
+		 		fmt.Println("Simulated 'Calcula_Salario_aposentadoria' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 		 case 01:
-			//Calcula_Idade_aposentadoria(*(users)[i].id) 
+			/*
+		 	go func(){
+		 		Calcula_Idade_aposentadoria(uid)
+		 		fmt.Println("Simulated 'Calcula_Idade_aposentadoria' with user_id: ",uid)
+		 	}()
+		 	*/
 			break
 		 case 02:
-			//Calculo_Investimento_em_previdencia_mensal(*(users)[i].id)
+			/*
+		 	go func(){
+		 		Calcula_Investimento_em_previdencia_mensal(uid)
+		 		fmt.Println("Simulated 'Calcula_Investimento_em_previdencia_mensal' with user_id: ",uid)
+		 	}()
+		 	*/
 			break
 		 case 03:
-		 	//LCI(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		LCI(uid)
+		 		fmt.Println("Simulated 'LCI' with user_id: ",uid)
+		 	}()
+		 	*/
 			break
 		 case 04:	
-			//LCA(*(users)[i].id)
+			/*
+		 	go func(){
+		 		LCA(uid)
+		 		fmt.Println("Simulated 'LCA' with user_id: ",uid)
+		 	}()
+		 	*/
 			break
 		 case 05:
-		 	//LC(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		LC(uid)
+		 		fmt.Println("Simulated 'LC' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 	 	 case 06:
-	 	 	//CDB(*(users)[i].id)
+	 	 	/*
+		 	go func(){
+		 		CDB(uid)
+		 		fmt.Println("Simulated 'CDB' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 		 case 07:
-		 	//Acoes_Escriturais(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		Acoes_Escriturais(uid)
+		 		fmt.Println("Simulated 'Acoes_Escriturais' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 		 case 8:
-		 	//Rentabilidade_da_carteira(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		Rentabilidade_da_carteira(uid)
+		 		fmt.Println("Simulated 'Rentabilidade_da_carteira' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break	
 		 case 9:
-		 	//Rentabilidade_da_carteira(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		Simulador_de_investimento(uid)
+		 		fmt.Println("Simulated 'Simulador_de_investimento' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 		 case 10:
-		 	//Simulador_de_investimento(*(users)[i].id)
+		 	/*
+		 	go func(){
+		 		Calcul_poupanca(uid)
+		 		fmt.Println("Simulated 'Calculo_poupanca' with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
-		 case 11:
-		 	//Calculo_poupanca(*(users)[i].id)
+		 default:
+		 	/*
+		 	go func(){
+		 		fmt.Println("Simulation failed with user_id: ",uid)
+		 	}()
+		 	*/
 		 	break
 
 
