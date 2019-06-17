@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import "time"
+
 func test() int{
 	return 10
 }
@@ -18,6 +18,9 @@ func main(){
 
 	random_atributes(&users)
 	fmt.Println(users)
+
+	calculadora()
+	previdencia()
 
 	
 }

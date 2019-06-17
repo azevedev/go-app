@@ -1,8 +1,9 @@
-importar  " fmt "
+package main
 
-func  main () {
-	enca  : =  `
-	
+import "fmt"
+
+func  calculadora () {
+	enca  :=`
 	*******************	
 	    CALCULADORA
 	*******************
@@ -24,71 +25,69 @@ func  main () {
 
 	// Soma
 
-	se ope == 1 {
-		fmt. Println ( " Coloque  o primeiro número para a soma: " )
-		fmt. Scanln (& num)
-		fmt. Println ( " Coloque o segundo número para a soma: " )
-		fmt. Scanln (& num1)
-		resul  : =  `
+	if ope == 1 {
+		fmt.Println ("Coloque  o primeiro número para a soma: " )
+		fmt.Scanln (&num)
+		fmt.Println ("Coloque o segundo número para a soma: " )
+		fmt.Scanln (&num1)
+		resul  :=  `
 		***********************
 		* resultado da soma *
 		***********************	
 		`
-		resultado  : = num + num1
+		resultado  := num + num1
 		fmt. Println (resul)
 		fmt. Println ( "O resultado da Soma é: " , resultado)
 
 	}
 	// Subtração
-	se ope == 2 {
+	if ope == 2 {
 		fmt. Println ( " Coloque  o primeiro número para a Subtração: " )
 		fmt. Scanln (& num)
 		fmt. Println ( " Coloque  o primeiro número para a Subtração: " )
 		fmt. Scanln (& num1)
-		resul  : =  `
+		resul  :=  `
 		************************
 		* resultado de Subtração *
 		************************
 		`
-		resultado  : = num - num1
+		resultado  := num - num1
 		fmt. Println (resul)
 		fmt. Println ( "O resultado da Subtração: " , resultado)
 
 	}
-	se ope == 3 {
+	if ope == 3 {
 		fmt. Println ( " Coloque  o primeiro número para Multiplicação: " )
 		fmt. Scanln (& num)
 		fmt. Println ( " Coloque  o primeiro número para Multiplicación: " )
 		fmt. Scanln (& num1)
-		resul  : =  `
+		resul  :=  `
 		********************************
 		* resultado da multiplicação *
 		********************************
 		`
-		resultado  : = num * num1
+		resultado  := num * num1
 		fmt. Println (resul)
 		fmt. Println ( "O resultado da multiplicação: " , resultado)
 
 	}
-	se ope == 4 {
+	if ope == 4 {
 		fmt. Println ( " Coloque  o primeiro número para Divisão: " )
 		fmt. Scanln (& num)
 		fmt. Println ( " Coloque  o primeiro número para Divisão: " )
 		fmt. Scanln (& num1)
-		resul  : =  `
+		resul  :=  `
 		***************************
 		* resultado da Divisão *
 		***************************
 		`
-		resultado  : = num / num1
+		resultado  := num / num1
 		fmt. Println (resul)
 		fmt. Println ( "O resultado da Divisão es: " , resultado)
 
 	}
 	// sair
 	fmt. Println ( " Presione enter para sair \n " )
-	var  espera  corda
-	fmt. Scanln (& espera)
-
+	fmt. Scanln ()
 	fmt. Println ( " Tchau " )
 }
