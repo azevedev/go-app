@@ -12,15 +12,18 @@ func main(){
 
 
 
-	//Funções funcionando - simulador_usuarios
- 	users := criar_users(10)
-	fmt.Println(users)
+	//Funções funcionando 
+	 	//simulador_usuarios
+	 	users := criar_users(10)
+		fmt.Println(users)
 
-	random_atributes(&users)
-	fmt.Println(users)
+		random_atributes(&users)
+		fmt.Println(users)
 
-	calculadora()
-	previdencia()
+
+	//Funções em desenvolvimento
+		// calculadora()
+		// previdencia()
 
 	
 }
