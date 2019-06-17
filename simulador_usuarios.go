@@ -54,7 +54,7 @@ func random_queries(users *[]Usuario){
  	r1 := rand.New(s1)
 	for i := 0; i < len(*users); i++{
 		r := r1.Intn(11)
-
+		
 		switch(r){
 		 case 00:
 		 	/*
