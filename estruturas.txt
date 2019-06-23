@@ -21,7 +21,7 @@ Previdencia() {
 
 Investimentos() {
 
-	Get_perfil_de_investidor()
+	Perfil_de_investidor()
 	Simulador_de_investimentos()
 }
 
