@@ -1,11 +1,3 @@
-package main
-
-import "fmt"
-
-func main() {
-   fmt.Printf("hello, world\n")
-}
-
 //App - Educação financeira
 Usuario() {
 	Id()
@@ -29,17 +21,8 @@ Previdencia() {
 
 Investimentos() {
 
-	Get_perfil_de_investidor()
-	Fundos_de_Investimento()
-	LCI()
-	LCA()
-	LC()
-	CDB()
-	Acoes_Escriturais()
-	Saldo_bruto_total()
-	Rentabilidade_da_carteira()
-	Simulador_de_investimento()
-	Calculo_poupanca()
+	Perfil_de_investidor()
+	Simulador_de_investimentos()
 }
 
 Despesas() {
