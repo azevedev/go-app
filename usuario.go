@@ -1,30 +1,28 @@
-package main	
+package main
 
-//struct do usuario
-type Usuario struct{
-	id int
-	renda float64
-	idade int
-	nome string
-	perfil_investimento string
-	
-
+// Usuario struct que denfine o user
+type Usuario struct {
+	id                 int
+	renda              float64
+	idade              int
+	nome               string
+	perfilInvestimento string
 }
 
 //cria um novo usuário e o retorna
-func new_user(id int, renda float64, idade int, nome string, p_f string) Usuario{
+func newUser(id int, renda float64, idade int, nome string, pf string) Usuario {
 	user := Usuario{
-		id: id,
-		renda: renda,
-		idade: idade,
-		nome: nome,
-		perfil_investimento: p_f,
+		id:                 id,
+		renda:              renda,
+		idade:              idade,
+		nome:               nome,
+		perfilInvestimento: pf,
 	}
 	return user
 }
 
 //cria um novo usuário com atributos nulos e o retorna
-func user_new() Usuario{
+func userNew() Usuario {
 	user := new(Usuario)
 	return *user
 }
