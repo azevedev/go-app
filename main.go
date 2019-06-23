@@ -22,5 +22,7 @@ func main() {
 	//Funções em desenvolvimento
 	// calculadora()
 	// previdencia()
+	
+	servidor()
 
 }
