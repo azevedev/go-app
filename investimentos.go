@@ -19,7 +19,7 @@ func menu_investimentos() {
 	//switch opcao
 }
 
-func main() {
+func investimentos() {
 
 	menu_investimentos()
 }
