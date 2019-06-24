@@ -3,7 +3,41 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: "Lato", sans-serif;}
+  input[type="text"] {
+    width: 250px;
+    border-style: none;
+    border-radius: 3px;
+    box-shadow: 3px 4px 6px #553333;
+    padding: 7px;
+    margin-bottom: 14px;
+    background-color:#eee;
+    transition: width 300ms ease-in-out;
+  }
+
+  input[type="text"]:focus {
+        width: 300px;
+        transition: width 300ms ease-in-out;
+  }
+  input[type="submit"] {
+    width: 150px;
+    padding: 6px;
+    font-size: 1.3em;
+    border-style: none;
+    margin: 10px 0px;
+    background-color:#009900;
+    /* box-shadow: 3px 4px 2px #005500; */
+    
+  }
+
+  input[type="submit"]:hover{
+    background-color: #00cc00;
+    box-shadow: 3px 4px 2px #111;
+    transition: background-color 200ms linear;
+    transition: box-shadow 200ms ;
+    
+  }
+  html{ height: 100%; display: flex; padding: 0; margin: 0;}
+  body {font-family: "Lato", sans-serif; display: flex; flex-direction: column; flex: 1; padding: 0; margin: 0;}
 
 .tablink {
   background-color: #555;
@@ -27,12 +61,18 @@ body {font-family: "Lato", sans-serif;}
   display: none;
   padding: 50px;
   text-align: center;
+  flex: 1;
+}
+/* Style the buttons */
+.buttons{
+  flex: 0;
+
 }
 
-#Home {background-color:red;}
-#Previdencia {background-color:green;}
-#Investimentos {background-color:blue;}
-#Custos {background-color:orange;}
+#Home {background-color:#CC0000;}
+#Previdencia {background-color:#33FF33;}
+#Investimentos {background-color:#3333FF;}
+#Custos {background-color:#FF9933;}
 </style>
 </head>
 <body>
@@ -45,7 +85,7 @@ body {font-family: "Lato", sans-serif;}
     <input type="text" name="firstname" value="Mickey"><br>
     Last name:<br>
     <input type="text" name="lastname" value="Mouse"><br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Enviar">
   </form>
   TESTE: {{.NomeCompleto}}
   
@@ -66,11 +106,13 @@ body {font-family: "Lato", sans-serif;}
   <p>Custos is the capital of Norway.</p>
 </div>
 
-<button class="tablink" onclick="openCity('Home', this, 'red')" id="defaultOpen">Home</button>
-<button class="tablink" onclick="openCity('Previdencia', this, 'green')">Previdencia</button>
-<button class="tablink" onclick="openCity('Investimentos', this, 'blue')">Investimentos</button>
-<button class="tablink" onclick="openCity('Custos', this, 'orange')">Custos</button>
 
+<div class="buttons">
+<button class="tablink" onclick="openCity('Home', this, '#aa0000')" id="defaultOpen">Home</button>
+<button class="tablink" onclick="openCity('Previdencia', this, '#11dd11')">Previdencia</button>
+<button class="tablink" onclick="openCity('Investimentos', this, '#1111dd')">Investimentos</button>
+<button class="tablink" onclick="openCity('Custos', this, '#dd7711')">Custos</button>
+</div>
 <script>
 function openCity(cityName,elmnt,color) {
   var i, tabcontent, tablinks;

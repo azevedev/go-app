@@ -1,15 +1,16 @@
 package main
 
 import (
-	"log"
-	"net"
 	"fmt"
 	"html/template"
+	"log"
+	"net"
 	"net/http"
 
 	"github.com/zserge/webview"
 )
 
+// Person struct que define person
 type Person struct {
 	Fname string
 	Lname string
@@ -20,10 +21,9 @@ const (
 	windowHeight = 500
 )
 
-
 func myhandler(w http.ResponseWriter, r *http.Request) {
-    switch r.Method {
-    case "GET":     
+	switch r.Method {
+	case "GET":
 		tmpl, _ := template.ParseFiles("index.html")
 		data := struct {
 			NomeCompleto string
@@ -31,16 +31,16 @@ func myhandler(w http.ResponseWriter, r *http.Request) {
 			NomeCompleto: "",
 		}
 		tmpl.Execute(w, data)
-    case "POST":
-    	P := Person{Fname: "Sean", Lname: "50"}
-	    P.Fname = r.FormValue("firstname")
-	    P.Lname = r.FormValue("lastname")
-        fmt.Println("POST", P.Fname, P.Lname)
+	case "POST":
+		P := Person{Fname: "Sean", Lname: "50"}
+		P.Fname = r.FormValue("firstname")
+		P.Lname = r.FormValue("lastname")
+		fmt.Println("POST", P.Fname, P.Lname)
 		tmpl, _ := template.ParseFiles("index.html")
 		data := struct {
 			NomeCompleto string
 		}{
-			NomeCompleto: P.Fname+P.Lname,
+			NomeCompleto: P.Fname + P.Lname,
 		}
 		tmpl.Execute(w, data)
 	default:
@@ -51,7 +51,7 @@ func myhandler(w http.ResponseWriter, r *http.Request) {
 			NomeCompleto: "",
 		}
 		tmpl.Execute(w, data)
-    }
+	}
 }
 
 func startServer() string {
@@ -80,5 +80,3 @@ func servidor() {
 	defer w.Exit()
 	w.Run()
 }
-
-

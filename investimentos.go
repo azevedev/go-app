@@ -63,8 +63,3 @@ func analisePerfil() {
 	}
 
 }
-
-func main() {
-	//simuladorInvestimentos()
-	analisePerfil()
-}
