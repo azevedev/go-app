@@ -1,49 +1,126 @@
-package main
+importar  " fmt "
 
-var es []float64
+func  main () {
+	enca  : =  `
+	
+	*******************	
+	    Previdencia
+	*******************
+	`
+Previdencia () {
 
-func varInit() {
-	es = []float64{36.6, 35.7, 34.8, 34.0, 33.1, 32.2, 31.4, 30.5, 29.7, 28.8, 28.0, 27.2, 26.4, 25.6, 24.8, 24.0, 23.2, 22.4, 21.6, 20.9, 20.1, 19.4, 18.7, 18.0, 17.3, 16.6, 15.9, 15.2}
+	fmt. Println (enca) // aqui o programa mostra as opções disponíveis ao usuário
+	fmt. Println ( ` Nosso simulador possui as seguintes opções: 
+		1-> Quero saber qual o valor que preciso contribuir	
+		2-> Quero saber quanto que irei receber por mês		
+		` )
+
+	fmt. Println ( "Escolha uma das opções" ) // aqui o programa seleciona qual das duas áreas ele entrara
+	var  ope  int
+	fmt. Scanln (& ope)
+	var  num  int
+	var  num1  int
+
+//opção 1 - valor da contribuição
+
+	se ope == 1 { // escolha do usuario na opção 1 apresentado
+		fmt. Println ( " Qual a sua idade? " ) // pergunta 1 ao usuario
+		fmt. Scanln (& idade_op1) //le e armazena a resposta 1 do usuario
+		fmt. Println ( " Quantos anos você quer se aposentar? " ) // pergunta 2 ao usuario
+		fmt. Scanln (& anos_op1) //le e armazena a resposta 2 do usuario
+		fmt. Println ("Quando você se aposentar, quanto quer receber?") // pergunta 3 ao usuario
+		fmt. Scanln (& receber_op1) //le e armazena a resposta 3 do usuario
+		
+		// Subtração (para saber qual o tempo de contribuição em anos)
+			tc_op1  : =  `
+			************************
+			*tempo_de_contribuicao*
+			************************
+			`  //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+			tempo_de_contribuicao_op1  : = anos_op1 - idade_op1 // resultado da subtracao do tempo de contribuicao
+			fmt. Println (tc_op1)
+			fmt. Println ( "O seu tempo de contribuição é:" , tempo_de_contribuicao_op1) // ele printa na tela o tempo de contribuicao
+
+		// Multiplicação (para saber qual o tempo de contribuição em meses)
+			
+				tcm_op1  : =  `
+				********************************
+				* tempo_de_contribuicao_meses *
+				********************************
+				`  //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+				tempo_de_contribuicao_meses_op1  : = tc_op1 * 12 // resultado da multiplicação do tempo em meses
+				fmt. Println (tcm_op1)
+				fmt. Println ( "O tempo de contribuição em meses é de: " , tempo_de_contribuicao_meses_op1) // ele printa na tela o tempo de contribuicao
+
+
+		// Divisão (para saber qual o valor ele precisará contribuir)
+		vc_op1  : =  `
+		***************************
+		* valor_da_contribuicao *
+		***************************
+		`  //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+		valor_da_contribuicao_op1  : = receber_op1 / tempo_de_contribuicao_meses_op1 //divisao do que quer receber pelo tempo de contribuicao em meses
+		fmt. Println (vc_op1)
+		fmt. Println ( "O valor que precisará contribuir para alcançar seu objetivo é: R$" , valor_da_contribuicao_op1) // ele printa na tela o valor necessário
+
 }
 
-func calculaSalarioAposentadoria(idade int, tempC int, valorMensal float64) float64 {
-	a := 0.08 //taxa selic reduzida
-	temp := tempC * 12
-	total := 0.0
-	for i := 1; i <= temp; i++ {
-		total += valorMensal
-		if i%12 == 0 {
-			total += total * a
-		}
-	}
-	aliquota := 0.095 // os valores mais comuns são 11% e 8%. fiz uma média.
-	ft := ((float64(tempC) * aliquota) / es[idade-43]) * (1 + ((float64(tempC) * aliquota) / 100))
-	//calculo do INSS para o Fator Previdenciário, baseado na espectativa de vida do aposentado.
-	//o valor da alíquota foi reduzido, pois aqui considera-se um salário 'até morrer' para o aposentado
-	total *= ft
-	total /= float64(120 - idade)
-	return total
+//opção 2 - valor do salário mensal
 
-}
+	se ope == 2 { // escolha do usuario na opção 2 apresentado
+		fmt. Println ( " Qual a sua idade? " ) // pergunta 1 ao usuario
+		fmt. Scanln (& idade_op2) //le e armazena a resposta 1 do usuario
+		fmt. Println ( " Quantos anos você quer se aposentar? " ) // pergunta 2 ao usuario
+		fmt. Scanln (& anos_op2) //le e armazena a resposta 2 do usuario
+		fmt. Println ("Quanto você quer contribuir?") // pergunta 3 ao usuario
+		fmt. Scanln (& contribuir_op2) //le e armazena a resposta 3 do usuario
+		fmt. Println ("Quando você se aposentar, até que idade deseja receber renda mensal?") // pergunta 4 ao usuario
+		fmt. Scanln (& idosinho_op2) //le e armazena a resposta 4 do usuario
+		
+		// Subtração (para saber qual o tempo de contribuição em anos)
+			tc_op2  : =  `
+			************************
+			*tempo_de_contribuicao*
+			************************
+			` //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+			tempo_de_contribuicao_op2  : = anos_op2 - idade_op2 // resultado da subtracao do tempo de contribuicao
+			fmt. Println (tc_op2)
+			fmt. Println ( "O seu tempo de contribuição é:" , tempo_de_contribuicao_op2) // ele printa na tela o tempo de contribuicao
 
-func calculaIdadeAposentadoria() {
+		// Multiplicação (para saber qual o tempo de contribuição em meses)
+			
+				tcm_op2  : =  `
+				********************************
+				* tempo_de_contribuicao_meses *
+				********************************
+				` //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+				tempo_de_contribuicao_meses_op2  : = tc_op2 * 12 // resultado da multiplicação do tempo em meses
+				fmt. Println (tcm_op2)
+				fmt. Println ( "O tempo de contribuição em meses é de: " , tempo_de_contribuicao_meses_op2) // ele printa na tela o tempo de contribuicao
 
-}
+		// Multiplicação (para saber qual o valor total em meses)
+			
+				vt_op2  : =  `
+				********************************
+				* valor_total_op2 *
+				********************************
+				` //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+				valor_total_op2  : = tcm_op2 * contribuir_op2  // resultado da multiplicação valor total em meses para o contribuicao 
+				fmt. Println (vt_op2)
+				fmt. Println ( "O valor total é: " , valor_total_op2) // ele printa na tela o valor total em meses
 
-func calculoInvestimentoPrevidenciaMensal() {
+		// Conta para juros compostos
 
-}
+				vf_op2 : = `
+				********************************
+				* valor_final_op2 *
+				********************************
+				` //ta usando as estrelinhas para atribuir o valor do que ta escrito dentro
+				valor_final_op2  : = vt_op2 * (1+9)^tcm_op2  // resultado da multiplicação valor total em meses para o contribuicao 
+				fmt. Println (vf_op2)
+				fmt. Println ( "Você irá receber por mês " , valor_final_op2) // ele printa na tela o valor final que voce irá receber por mês
 
-//
-// Previdencia() {
-// 	Get_Renda()
-// 	Get_Idade()
-// 	Get_Investimento_em_previdencia_mensal()
-// 	Get_Idade_aposentadoria()
-// 	Get_Salario_aposentadoria()
-// 	//Previsao_aposentadoria
-// 	Calcula_Salario_aposentadoria()
-// 	Calcula_Idade_aposentadoria()
-// 	Calculo_Investimento_em_previdencia_mensal()
-// }
-//
+	fmt. Println ( " Presione enter para sair \n " )
+	var  espera  corda
+	fmt. Scanln (& espera)
+	fmt. Println ( " Tchau! " )
