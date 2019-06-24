@@ -2,21 +2,24 @@ package main
 
 import "fmt"
 
-func tesouroSelic() {
-	var depositoInicial, poupanca, meses, tesouroSelic float64
-	fmt.Println("Digite o depósito inicial em R$:")
-	fmt.Scan(&depositoInicial)
-	fmt.Println("Digite o tempo de investimento em meses:")
-	fmt.Scan(&meses)
+func poupanca(depositoInicial float64, meses float64) {
+	var poupanca float64
 	poupanca = (depositoInicial * 0.003715) * meses
 	fmt.Printf("Na poupança você renderia R$ %.2f \n", poupanca)
-	tesouroSelic = poupanca + poupanca*0.0315
-	fmt.Printf("No Tesouro Selic você renderá R$ %.2f\n", tesouroSelic)
 }
 
-func simuladorInvestimentos() {
+func tesouroPrefixado(depositoInicial float64, meses float64) {
+	var tesouroPrefixado, poupanca float64
+	poupanca = (depositoInicial * 0.003715) * meses
+	tesouroPrefixado = poupanca + poupanca*0.4538
+	fmt.Printf("No Tesouro Pré Fixado você renderá R$ %.2f\n", tesouroPrefixado)
+}
 
-	tesouroSelic()
+func tesouroSelic(depositoInicial float64, meses float64) {
+	var tesouroSelic, poupanca float64
+	poupanca = (depositoInicial * 0.003715) * meses
+	tesouroSelic = poupanca + poupanca*0.0315
+	fmt.Printf("No Tesouro Selic você renderá R$ %.2f\n", tesouroSelic)
 }
 
 func analisePerfil() {
@@ -63,3 +66,15 @@ func analisePerfil() {
 	}
 
 }
+
+//Apenas para testes
+/*func main() {
+	var depositoInicial, meses float64
+	fmt.Println("Digite o depósito inicial em R$:")
+	fmt.Scan(&depositoInicial)
+	fmt.Println("Digite o tempo de investimento em meses:")
+	fmt.Scan(&meses)
+	poupanca(depositoInicial, meses)
+	tesouroPrefixado(depositoInicial, meses)
+	tesouroSelic(depositoInicial, meses)
+}*/
