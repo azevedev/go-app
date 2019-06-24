@@ -4,50 +4,64 @@ import (
 	"log"
 	"net"
 	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/zserge/webview"
 )
 
+type Person struct {
+	Fname string
+	Lname string
+}
+
 const (
 	windowWidth  = 480
-	windowHeight = 320
+	windowHeight = 500
 )
 
 
-func hello(w http.ResponseWriter, r *http.Request) {
-    if r.URL.Path != "/" {
-        http.Error(w, "404 not found.", http.StatusNotFound)
-        return
-    }
- 
+func myhandler(w http.ResponseWriter, r *http.Request) {
     switch r.Method {
     case "GET":     
-         http.ServeFile(w, r, "form.html")
+		tmpl, _ := template.ParseFiles("index.html")
+		data := struct {
+			NomeCompleto string
+		}{
+			NomeCompleto: "",
+		}
+		tmpl.Execute(w, data)
     case "POST":
-        // Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
-        if err := r.ParseForm(); err != nil {
-            fmt.Fprintf(w, "ParseForm() err: %v", err)
-            return
-        }
-        fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
-        name := r.FormValue("name")
-        idade := r.FormValue("idade")
-        fmt.Fprintf(w, "Name = %s\n", name)
-        fmt.Fprintf(w, "Address = %s\n", idade)
-    default:
-        fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
+    	P := Person{Fname: "Sean", Lname: "50"}
+	    P.Fname = r.FormValue("firstname")
+	    P.Lname = r.FormValue("lastname")
+        fmt.Println("POST", P.Fname, P.Lname)
+		tmpl, _ := template.ParseFiles("index.html")
+		data := struct {
+			NomeCompleto string
+		}{
+			NomeCompleto: P.Fname+P.Lname,
+		}
+		tmpl.Execute(w, data)
+	default:
+		tmpl, _ := template.ParseFiles("index.html")
+		data := struct {
+			NomeCompleto string
+		}{
+			NomeCompleto: "",
+		}
+		tmpl.Execute(w, data)
     }
 }
 
 func startServer() string {
-	ln, err := net.Listen("tcp", "127.0.0.1:0")
+	ln, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
 		log.Fatal(err)
 	}
 	go func() {
 		defer ln.Close()
-		http.HandleFunc("/", hello)
+		http.HandleFunc("/", myhandler)
 		log.Fatal(http.Serve(ln, nil))
 	}()
 	return "http://" + ln.Addr().String()
@@ -58,7 +72,7 @@ func servidor() {
 	w := webview.New(webview.Settings{
 		Width:     windowWidth,
 		Height:    windowHeight,
-		Title:     "Simple window demo",
+		Title:     "App_LP",
 		Resizable: true,
 		URL:       url,
 	})
@@ -66,3 +80,5 @@ func servidor() {
 	defer w.Exit()
 	w.Run()
 }
+
+

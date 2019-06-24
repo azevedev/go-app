@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+#Home {background-color:red;}
+#Previdencia {background-color:green;}
+#Investimentos {background-color:blue;}
+#Custos {background-color:orange;}
+</style>
+</head>
+<body>
+
+<div id="Home" class="tabcontent">
+  <h1>Home</h1>
+  <p>Home is the home.</p>
+  <form action="/" method="POST">
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey"><br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  TESTE: {{.NomeCompleto}}
+  
+</div>
+
+<div id="Previdencia" class="tabcontent">
+  <h1>Previdencia</h1>
+  <p>Previdencia is previdencia.</p> 
+</div>
+
+<div id="Investimentos" class="tabcontent">
+  <h1>Investimentos</h1>
+  <p>Investimentos is the capital of Japan.</p>
+</div>
+
+<div id="Custos" class="tabcontent">
+  <h1>Custos</h1>
+  <p>Custos is the capital of Norway.</p>
+</div>
+
+<button class="tablink" onclick="openCity('Home', this, 'red')" id="defaultOpen">Home</button>
+<button class="tablink" onclick="openCity('Previdencia', this, 'green')">Previdencia</button>
+<button class="tablink" onclick="openCity('Investimentos', this, 'blue')">Investimentos</button>
+<button class="tablink" onclick="openCity('Custos', this, 'orange')">Custos</button>
+
+<script>
+function openCity(cityName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(cityName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 
