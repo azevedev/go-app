@@ -1,8 +1,12 @@
 package main
 
-import "time"
-import "math/rand"
-import "github.com/Pallinder/go-randomdata"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+
+	"github.com/Pallinder/go-randomdata"
+)
 
 //Cria uma lista de X (qtd) usuários com atributos nulos, depois retorna essa lista.
 func criarUsers(qtd int) []Usuario {
@@ -50,109 +54,79 @@ func randomAtributes(users *[]Usuario) {
 
 //Recebe uma lista de
 func randomQueries(users *[]Usuario) {
-	s1 := rand.NewSource(time.Now().UnixNano())
-	r1 := rand.New(s1)
-	for i := 0; i < len(*users); i++ {
-		r := r1.Intn(11)
+	for {
+		time.Sleep(800 * time.Millisecond)
+		s1 := rand.NewSource(time.Now().UnixNano())
+		r1 := rand.New(s1)
+		for i := 0; i < len(*users); i++ {
+			r := r1.Intn(11)
+			uid := i + r
+			switch r {
+			case 00:
+				go func() {
+					fmt.Println("Simulated 'poupanca' with user_id: ", uid)
+				}()
+				break
+			case 01:
+				go func() {
+					fmt.Println("Simulated 'tesouroPrefixado' with user_id: ", uid)
+				}()
 
-		switch r {
-		case 00:
-			/*
-				go func(){
-					Calcula_Salario_aposentadoria(uid)
-					fmt.Println("Simulated 'Calcula_Salario_aposentadoria' with user_id: ",uid)
+				break
+			case 02:
+				go func() {
+					fmt.Println("Simulated 'tesouroSelic' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 01:
-			/*
-				go func(){
-					Calcula_Idade_aposentadoria(uid)
-					fmt.Println("Simulated 'Calcula_Idade_aposentadoria' with user_id: ",uid)
+				break
+			case 03:
+				go func() {
+					fmt.Println("Simulated 'tesouroIPCA' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 02:
-			/*
-				go func(){
-					Calcula_Investimento_em_previdencia_mensal(uid)
-					fmt.Println("Simulated 'Calcula_Investimento_em_previdencia_mensal' with user_id: ",uid)
+
+				break
+			case 04:
+				go func() {
+					fmt.Println("Simulated 'CDBeLC' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 03:
-			/*
-				go func(){
-					LCI(uid)
-					fmt.Println("Simulated 'LCI' with user_id: ",uid)
+				break
+			case 05:
+				go func() {
+					fmt.Println("Simulated 'LCIeLCA' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 04:
-			/*
-				go func(){
-					LCA(uid)
-					fmt.Println("Simulated 'LCA' with user_id: ",uid)
+				break
+			case 06:
+				go func() {
+					fmt.Println("Simulated 'analisePerfil' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 05:
-			/*
-				go func(){
-					LC(uid)
-					fmt.Println("Simulated 'LC' with user_id: ",uid)
+				break
+			case 07:
+				go func() {
+					fmt.Println("Simulated 'CalculadoraAposentadoria' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 06:
-			/*
-				go func(){
-					CDB(uid)
-					fmt.Println("Simulated 'CDB' with user_id: ",uid)
+				break
+			case 8:
+				go func() {
+					fmt.Println("Simulated 'CalculadoraAposentadoria' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 07:
-			/*
-				go func(){
-					Acoes_Escriturais(uid)
-					fmt.Println("Simulated 'Acoes_Escriturais' with user_id: ",uid)
+				break
+			case 9:
+				go func() {
+					fmt.Println("Simulated 'CalculadoraContribuicao' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 8:
-			/*
-				go func(){
-					Rentabilidade_da_carteira(uid)
-					fmt.Println("Simulated 'Rentabilidade_da_carteira' with user_id: ",uid)
+				break
+			case 10:
+				go func() {
+					fmt.Println("Simulated 'custos' with user_id: ", uid)
 				}()
-			*/
-			break
-		case 9:
-			/*
-				go func(){
-					Simulador_de_investimento(uid)
-					fmt.Println("Simulated 'Simulador_de_investimento' with user_id: ",uid)
+				break
+			default:
+				go func() {
+					fmt.Println("Simulation failed with user_id: ", uid)
 				}()
-			*/
-			break
-		case 10:
-			/*
-				go func(){
-					Calcul_poupanca(uid)
-					fmt.Println("Simulated 'Calculo_poupanca' with user_id: ",uid)
-				}()
-			*/
-			break
-		default:
-			/*
-				go func(){
-					fmt.Println("Simulation failed with user_id: ",uid)
-				}()
-			*/
-			break
+				break
+
+			}
 
 		}
-
 	}
 }
