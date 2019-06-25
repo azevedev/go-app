@@ -2,11 +2,13 @@ package main
 
 // Usuario struct que denfine o user
 type Usuario struct {
-	id                 int
-	renda              float64
-	idade              int
-	nome               string
-	perfilInvestimento string
+    id                 int
+    renda              float64
+    idade              int
+    nome               string
+    perfilInvestimento string
+    expec_vida int
+    expec_salario float64
 }
 
 //cria um novo usuário e o retorna
