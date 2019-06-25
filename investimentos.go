@@ -1,7 +1,27 @@
+/*  Programa: investimentos.go
+    Autor: Alexander Matheus de Melo Lima
+    Versão: 1.0
+    Concluída em: 24/06/2019
+
+	Breve descrição:
+		Funções que calculam o rendimento da poupança e o rendimento dos investimentos usando
+		como parâmetros o depósito inicial e a quantidade de meses que o dinheiro vai ficar
+		aplicado e levando em conta a porcentagem da rentabilidade de cada investimento ou poupança.
+
+	Considerações utilizadas na simulação:
+		1. Data da última atualização: 04/04/2018
+		2. de rentabilidade da Poupança: 0,3715% a.m.
+		3. Tesouro Selic: 6,50% a.a.
+		4. Tesouro Prefixado: 8,05%
+		5. Tesouro IPCA+: IPCA + 5,00% (Inflação 3% a.a.)
+
+		* Valores referentes a data da última atualização e podem sofrer alterações de acordo com o mercado.*/
+
 package main
 
 import "fmt"
 
+// Rendimento da poupança
 func poupanca(depositoInicial float64, meses float64) {
 	var poupanca float64
 	var periodo int = int(meses)
@@ -13,6 +33,7 @@ func poupanca(depositoInicial float64, meses float64) {
 	fmt.Printf("Na poupança você renderia R$ %.2f\n", poupanca)
 }
 
+// Rendimento do Tesouro Pré Fixado com base na poupança
 func tesouroPrefixado(depositoInicial float64, meses float64) {
 	var tesouroPrefixado, poupanca float64
 	var periodo int = int(meses)
@@ -24,6 +45,7 @@ func tesouroPrefixado(depositoInicial float64, meses float64) {
 	fmt.Printf("No Tesouro Pré Fixado você renderá R$ %.2f\n", tesouroPrefixado)
 }
 
+// Rendimento do Tesouro Selic com base na poupança
 func tesouroSelic(depositoInicial float64, meses float64) {
 	var tesouroSelic, poupanca float64
 	var periodo int = int(meses)
@@ -35,6 +57,7 @@ func tesouroSelic(depositoInicial float64, meses float64) {
 	fmt.Printf("No Tesouro Selic você renderá R$ %.2f\n", tesouroSelic)
 }
 
+// Rendimento do Tesouro IPCA+ com base na poupança
 func tesouroIPCA(depositoInicial float64, meses float64) {
 	var tesouroIPCA, poupanca float64
 	var periodo int = int(meses)
@@ -46,6 +69,7 @@ func tesouroIPCA(depositoInicial float64, meses float64) {
 	fmt.Printf("No Tesouro IPCA+ você renderá R$ %.2f\n", tesouroIPCA)
 }
 
+// Rendimento de CDB e LC com base na poupança
 func CDBeLC(depositoInicial float64, meses float64) {
 	var CDBeLC, poupanca float64
 	var periodo int = int(meses)
@@ -57,6 +81,7 @@ func CDBeLC(depositoInicial float64, meses float64) {
 	fmt.Printf("No CDB e LC você renderá R$ %.2f\n", CDBeLC)
 }
 
+// Rendimento de LCI e LCA com base na poupança
 func LCIeLCA(depositoInicial float64, meses float64) {
 	var LCIeLCA, poupanca float64
 	var periodo int = int(meses)
@@ -68,6 +93,8 @@ func LCIeLCA(depositoInicial float64, meses float64) {
 	fmt.Printf("No LCI e LCA você renderá R$ %.2f\n", LCIeLCA)
 }
 
+// A análise de perfil analisa o perfil do investidor com base nas respostas do usuário
+//somando a pontuação de acordo com os níveis das respostas, resultando no perfil
 func analisePerfil() {
 
 	var resposta, perfil int
