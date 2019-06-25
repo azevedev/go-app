@@ -26,6 +26,36 @@
 <div class="content">
 	<h2>Investimentos</h2>
 	<div>This is the Investimentos page</div>
+
+<div><form action="/Investimentos" method="POST">
+  1. Você acha fácil investir? 	
+  	<br><input type="radio" name="questao1" value="Sim">Sim<br>
+	<br><input type="radio" name="questao1" value="Nao">Nao<br>
+  2. Você possui alguma experiência ou formação na área financeira?
+  	<br><input type="radio" name="questao2" value="Sim">Sim<br>
+	<br><input type="radio" name="questao2" value="Nao">Nao<br>
+  3. E antes de tomar qualquer decisão sobre investir, o que você procura fazer?
+ 	<br><input type="radio" name="questao3" value="Converso com amigos ou familiares">Converso com amigos ou familiares<br>
+	<br><input type="radio" name="questao3" value="Consulto um especialista">Consulto um especialista<br>
+	<br><input type="radio" name="questao3" value="Leio noticias sobre o mercado">Leio noticias sobre o mercado<br>	
+  4. E o que você mais valoriza ao investir?
+ 	<br><input type="radio" name="questao4" value="a) Ganhar sempre mais">a) Ganhar sempre mais<br>
+	<br><input type="radio" name="questao4" value="b) Evitar perder capital ">b) Evitar perder capital<br>
+  5. Em quanto tempo você pretende atingir esse objetivo?
+ 	<br><input type="radio" name="questao5" value="a) Até 1 ano">a) Até 1 ano<br>
+	<br><input type="radio" name="questao5" value="b) Entre 1 e 5 anos ">b) Entre 1 e 5 anos<br>
+	<br><input type="radio" name="questao5" value="c) Entre 5 e 10 anos ">c) Entre 5 e 10 anos<br>
+	<br><input type="radio" name="questao5" value="d) Acima de 10 anos  ">d) Acima de 10 anos<br>
+  6. Qual é a sua renda mensal atualmente?
+ 	<br><input type="radio" name="questao6" value="a) Até R$ 4.000,00 ">a) Até R$ 4.000,00 <br>
+ 	<br><input type="radio" name="questao6" value="b) Entre R$ 4.000,00 e R$ 10.000,00 ">b) Entre R$ 4.000,00 e R$ 10.000,00<br>
+    <br><input type="radio" name="questao6" value="c) Acima de 10.000,00">c) Acima de 10.000,00<br>
+  <input type="submit" name="calcular">
+  Resultado: {{.Resultado}}
+
+
+</form></div>
+
 </div>
 </body>
 </html>
