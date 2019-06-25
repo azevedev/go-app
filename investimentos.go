@@ -114,7 +114,7 @@ func analisePerfil() {
 }
 
 //Testes
-func main() {
+/*func main() {
 	var depositoInicial, meses float64
 	fmt.Println("Digite o depósito inicial em R$:")
 	fmt.Scan(&depositoInicial)
@@ -126,4 +126,4 @@ func main() {
 	tesouroIPCA(depositoInicial, meses)
 	CDBeLC(depositoInicial, meses)
 	LCIeLCA(depositoInicial, meses)
-}
+}*/
