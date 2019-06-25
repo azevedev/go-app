@@ -4,22 +4,68 @@ import "fmt"
 
 func poupanca(depositoInicial float64, meses float64) {
 	var poupanca float64
-	poupanca = (depositoInicial * 0.003715) * meses
-	fmt.Printf("Na poupança você renderia R$ %.2f \n", poupanca)
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+	}
+	poupanca = poupanca - depositoInicial
+	fmt.Printf("Na poupança você renderia R$ %.2f\n", poupanca)
 }
 
 func tesouroPrefixado(depositoInicial float64, meses float64) {
 	var tesouroPrefixado, poupanca float64
-	poupanca = (depositoInicial * 0.003715) * meses
-	tesouroPrefixado = poupanca + poupanca*0.4538
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+		tesouroPrefixado = (poupanca - depositoInicial) * 1.4538
+	}
 	fmt.Printf("No Tesouro Pré Fixado você renderá R$ %.2f\n", tesouroPrefixado)
 }
 
 func tesouroSelic(depositoInicial float64, meses float64) {
 	var tesouroSelic, poupanca float64
-	poupanca = (depositoInicial * 0.003715) * meses
-	tesouroSelic = poupanca + poupanca*0.0315
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+		tesouroSelic = (poupanca - depositoInicial) * 1.0315
+	}
 	fmt.Printf("No Tesouro Selic você renderá R$ %.2f\n", tesouroSelic)
+}
+
+func tesouroIPCA(depositoInicial float64, meses float64) {
+	var tesouroIPCA, poupanca float64
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+		tesouroIPCA = (poupanca - depositoInicial) * 1.2333
+	}
+	fmt.Printf("No Tesouro IPCA+ você renderá R$ %.2f\n", tesouroIPCA)
+}
+
+func CDBeLC(depositoInicial float64, meses float64) {
+	var CDBeLC, poupanca float64
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+		CDBeLC = (poupanca - depositoInicial) * 1.278
+	}
+	fmt.Printf("No CDB e LC você renderá R$ %.2f\n", CDBeLC)
+}
+
+func LCIeLCA(depositoInicial float64, meses float64) {
+	var LCIeLCA, poupanca float64
+	var periodo int = int(meses)
+	poupanca = depositoInicial
+	for i := 1; i <= periodo; i++ {
+		poupanca = poupanca * 1.003715
+		LCIeLCA = (poupanca - depositoInicial) * 1.246
+	}
+	fmt.Printf("No LCI e LCA você renderá R$ %.2f\n", LCIeLCA)
 }
 
 func analisePerfil() {
@@ -67,8 +113,8 @@ func analisePerfil() {
 
 }
 
-//Apenas para testes
-/*func main() {
+//Testes
+func main() {
 	var depositoInicial, meses float64
 	fmt.Println("Digite o depósito inicial em R$:")
 	fmt.Scan(&depositoInicial)
@@ -77,4 +123,7 @@ func analisePerfil() {
 	poupanca(depositoInicial, meses)
 	tesouroPrefixado(depositoInicial, meses)
 	tesouroSelic(depositoInicial, meses)
-}*/
+	tesouroIPCA(depositoInicial, meses)
+	CDBeLC(depositoInicial, meses)
+	LCIeLCA(depositoInicial, meses)
+}
