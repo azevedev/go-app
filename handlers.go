@@ -31,9 +31,9 @@ func PrevidenciaHandler(w http.ResponseWriter, r *http.Request) {
         tmpl.Execute(w, " ")
     } else {
         fmt.Println("teste")
-        Usr := Usuario{0, 0.0, 0, "nome", "perfil", 0, 0.0}
+        Usr := Usuario{0, 0.0, 0, "nome", "perfil", 0, 0.0, 0.0}
         Usr.idade, _ = strconv.Atoi(r.FormValue("idade"))
-        Usr.expec_vida, _ = strconv.Atoi(r.FormValue("espectativa"))
+        Usr.expec_idade_aposent, _ = strconv.Atoi(r.FormValue("espectativa"))
         Usr.expec_salario, _ = strconv.ParseFloat(r.FormValue("salario"), 64)
         tmpl, _ := template.ParseFiles("templates/Previdencia.html")
         data := Rstruct{"voce nunca vai aposentar"}
