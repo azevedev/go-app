@@ -38,7 +38,6 @@ func servidor() {
         URL:   url,
     })
     defer w.Exit()
-    w.SetFullscreen(true)
     w.Run()
  
 }
