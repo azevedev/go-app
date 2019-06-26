@@ -4,7 +4,9 @@ import (
 	//"fmt"
 	//"net"
 	"net/http"
+    "log"
 
+    "github.com/zserge/webview"
     "github.com/gorilla/mux"
 )
  
@@ -25,7 +27,19 @@ func servidor() {
     router.HandleFunc("/Custos", CustosHandler)
  
  
+    go func() {
     http.Handle("/", router)
-    http.ListenAndServe(":8080", router)
+    log.Fatal(http.ListenAndServe(":8080", router))
+    }()
+    url := "http://" + "127.0.0.1:8080"
+    w := webview.New(webview.Settings{
+        Title:     "App_LP",
+        Resizable: true,        
+        URL:   url,
+    })
+    defer w.Exit()
+    w.SetFullscreen(true)
+    w.Run()
  
 }
+
