@@ -22,17 +22,15 @@
 	        </ul>
 	      </div>
 	    </nav>
+
+
 <div class="content">
-	<h2>Previdencia</h2>
-<div><form action="/Previdencia" method="POST">
-  Idade: <br><input type="text" name="idade" value="20" ><br>
-  Quantos anos quer se aposentar: <br><input type="text" name="anos" value="60"><br>
-  Quanto quer contribuir: <br><input type="text" name="contribuir" value="10"><br>
-  Quando você se aposentar, até que idade deseja receber renda mensal: <br><input type="text" name="idosinho" value="80"><br>
-  Quando você se aposentar, quanto quer receber: <br><input type="text" name="receber" value="30"><br>
-  <input type="submit" name="calcular">
-  Resultado: {{.Resultado}}
-</form></div>
+	<h2>Previdencia</h2><br><br>
+<form action="/PrevidenciaReceber" method="GET">
+  <button type="submit">Saber quanto você vai receber de aposentadoria</button><br><br>
+  <button type="submit" formaction="/PrevidenciaContribuir">Saber quanto você vai ter que contribuir</button>
+</form>
+
 </div>
 </body>
 </html>
