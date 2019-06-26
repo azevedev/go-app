@@ -22,7 +22,7 @@ package main
 import "fmt"
 
 // Rendimento da poupança
-func poupanca(depositoInicial float64, meses float64) {
+func poupanca(depositoInicial float64, meses float64) float64 {
 	var poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -30,11 +30,11 @@ func poupanca(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 	}
 	poupanca = poupanca - depositoInicial
-	fmt.Printf("Na poupança você renderia R$ %.2f\n", poupanca)
+	return poupanca
 }
 
 // Rendimento do Tesouro Pré Fixado com base na poupança
-func tesouroPrefixado(depositoInicial float64, meses float64) {
+func tesouroPrefixado(depositoInicial float64, meses float64) float64 {
 	var tesouroPrefixado, poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -42,11 +42,11 @@ func tesouroPrefixado(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 		tesouroPrefixado = (poupanca - depositoInicial) * 1.4538
 	}
-	fmt.Printf("No Tesouro Pré Fixado você renderá R$ %.2f\n", tesouroPrefixado)
+	return tesouroPrefixado
 }
 
 // Rendimento do Tesouro Selic com base na poupança
-func tesouroSelic(depositoInicial float64, meses float64) {
+func tesouroSelic(depositoInicial float64, meses float64) float64 {
 	var tesouroSelic, poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -54,11 +54,11 @@ func tesouroSelic(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 		tesouroSelic = (poupanca - depositoInicial) * 1.0315
 	}
-	fmt.Printf("No Tesouro Selic você renderá R$ %.2f\n", tesouroSelic)
+	return tesouroSelic
 }
 
 // Rendimento do Tesouro IPCA+ com base na poupança
-func tesouroIPCA(depositoInicial float64, meses float64) {
+func tesouroIPCA(depositoInicial float64, meses float64) float64 {
 	var tesouroIPCA, poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -66,11 +66,11 @@ func tesouroIPCA(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 		tesouroIPCA = (poupanca - depositoInicial) * 1.2333
 	}
-	fmt.Printf("No Tesouro IPCA+ você renderá R$ %.2f\n", tesouroIPCA)
+	return tesouroIPCA
 }
 
 // Rendimento de CDB e LC com base na poupança
-func CDBeLC(depositoInicial float64, meses float64) {
+func CDBeLC(depositoInicial float64, meses float64) float64 {
 	var CDBeLC, poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -78,11 +78,11 @@ func CDBeLC(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 		CDBeLC = (poupanca - depositoInicial) * 1.278
 	}
-	fmt.Printf("No CDB e LC você renderá R$ %.2f\n", CDBeLC)
+	return CDBeLC
 }
 
 // Rendimento de LCI e LCA com base na poupança
-func LCIeLCA(depositoInicial float64, meses float64) {
+func LCIeLCA(depositoInicial float64, meses float64) float64 {
 	var LCIeLCA, poupanca float64
 	var periodo int = int(meses)
 	poupanca = depositoInicial
@@ -90,7 +90,7 @@ func LCIeLCA(depositoInicial float64, meses float64) {
 		poupanca = poupanca * 1.003715
 		LCIeLCA = (poupanca - depositoInicial) * 1.246
 	}
-	fmt.Printf("No LCI e LCA você renderá R$ %.2f\n", LCIeLCA)
+	return LCIeLCA
 }
 
 // A análise de perfil analisa o perfil do investidor com base nas respostas do usuário

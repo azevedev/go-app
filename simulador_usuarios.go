@@ -28,6 +28,9 @@ func randomAtributes(users *[]Usuario) {
 		(*users)[i].nome = randomdata.FullName(randomdata.RandomGender)       //gera um nome aleatório
 		(*users)[i].idade = r1.Intn(30) + 18                                  //gera uma idade aleatória
 		(*users)[i].renda = float64(int(((r1.Float64()*5000)+100)*100)) / 100 //código para deixar a 'renda' com 2 casas decimais
+		(*users)[i].expec_idade_aposent = r1.Intn(80) + 18
+		(*users)[i].expec_contribuicao = r1.Float64() * 5000
+		(*users)[i].expec_contribuicao = r1.Float64() * 3000
 		pf := ""
 		try := r1.Intn(3) + 1
 		switch try {
@@ -64,59 +67,80 @@ func randomQueries(users *[]Usuario) {
 			switch r {
 			case 00:
 				go func() {
-					fmt.Println("Simulated 'poupanca' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := poupanca(arg1, arg2)
+					fmt.Printf("Simulated 'poupanca' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 01:
 				go func() {
-					fmt.Println("Simulated 'tesouroPrefixado' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := tesouroPrefixado(arg1, arg2)
+					fmt.Printf("Simulated 'tesouroPrefixado' with user_id: %d| result: %f", uid, r)
 				}()
 
 				break
 			case 02:
 				go func() {
-					fmt.Println("Simulated 'tesouroSelic' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := tesouroSelic(arg1, arg2)
+					fmt.Printf("Simulated 'tesouroSelic' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 03:
 				go func() {
-					fmt.Println("Simulated 'tesouroIPCA' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := tesouroIPCA(arg1, arg2)
+					fmt.Printf("Simulated 'tesouroIPCA' with user_id: %d| result: %f", uid, r)
 				}()
 
 				break
 			case 04:
 				go func() {
-					fmt.Println("Simulated 'CDBeLC' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := CDBeLC(arg1, arg2)
+					fmt.Printf("Simulated 'CDBeLC' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 05:
 				go func() {
-					fmt.Println("Simulated 'LCIeLCA' with user_id: ", uid)
+					arg1 := r1.Float64() * 1000
+					arg2 := r1.Float64() * 100.0
+					r := LCIeLCA(arg1, arg2)
+					fmt.Printf("Simulated 'LCIeLCA' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 06:
 				go func() {
-					fmt.Println("Simulated 'analisePerfil' with user_id: ", uid)
+					fmt.Printf("Simulated 'analisePerfil' with user_id: %d|", uid)
 				}()
 				break
 			case 07:
 				go func() {
-					fmt.Println("Simulated 'CalculadoraAposentadoria' with user_id: ", uid)
+					r := CalculadoraAposentadoria((*users)[i])
+					fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 8:
 				go func() {
-					fmt.Println("Simulated 'CalculadoraAposentadoria' with user_id: ", uid)
+					r := CalculadoraAposentadoria((*users)[i])
+					fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 9:
 				go func() {
-					fmt.Println("Simulated 'CalculadoraContribuicao' with user_id: ", uid)
+					r := CalculadoraContribuicao((*users)[i])
+					fmt.Printf("Simulated 'CalculadoraContribuicao' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			case 10:
 				go func() {
-					fmt.Println("Simulated 'custos' with user_id: ", uid)
+					fmt.Println("Simulated 'custos' with user_id: %d| result: %f", uid, r)
 				}()
 				break
 			default:
