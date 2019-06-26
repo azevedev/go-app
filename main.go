@@ -6,10 +6,6 @@ func test() int {
 	return 10
 }
 func main() {
-	varInit()
-	fmt.Println("Main!")
-
-	fmt.Println("Calculo: ", calculaSalarioAposentadoria(65, 45, 190))
 
 	//Funções funcionando
 

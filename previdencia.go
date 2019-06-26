@@ -12,8 +12,9 @@ func  CalculadoraAposentadoria (Usr Usuario) float64{
 	Meses_contribuindo := (Usr.expec_idade_aposent - Usr.idade)*12
 	Montante := 0.0
 	for i := 0; i < Meses_contribuindo; i++ {
-		Montante += Montante * TaxaMensal
-		Montante += Usr.expec_contribuicao
+		Montante = Montante + (Montante * TaxaMensal)
+		Montante = Montante + (Usr.expec_contribuicao)
+
 	}
 	Meses_aposentado := (expec_vida_brasileiro_contribuinte - Usr.expec_idade_aposent) * 12
 	aposentadoria := Montante/((1.0-(1.0/math.Pow((1+TaxaMensal), float64(Meses_aposentado))))/TaxaMensal)

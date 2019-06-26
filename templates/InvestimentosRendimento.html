@@ -22,14 +22,17 @@
 	        </ul>
 	      </div>
 	    </nav>
-
-
 <div class="content">
-	<h2>Previdencia</h2><br><br>
-<form action="/PrevidenciaReceber" method="GET">
-  <button type="submit">Saber quanto você vai receber de aposentadoria</button><br><br>
-  <button type="submit" formaction="/PrevidenciaContribuir">Saber quanto você vai ter que contribuir</button>
-</form>
+	<h2>Investimentos</h2>
+
+<div><form action="/InvestimentosRendimento" method="POST">
+	<h3>Quanto o dinheiro vai render</h3><br>
+  Deposito incial: <br><input type="text" name="deposito" value="1000" ><br>
+  Quanto meses o dinheiro vai ficar investido: <br><input type="text" name="meses" value="24"><br>
+  <input type="submit" name="calcular_rendimento">
+	<h3>Resultado: {{.Resultado}}</h3><br>
+
+</form></div>
 
 </div>
 </body>

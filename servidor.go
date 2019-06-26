@@ -15,12 +15,14 @@ func servidor() {
     router.HandleFunc("/", HomePageHandler) // GET
  
     router.HandleFunc("/Previdencia", PrevidenciaHandler)
+    router.HandleFunc("/PrevidenciaReceber", PrevidenciaRecHandler)
+    router.HandleFunc("/PrevidenciaContribuir", PrevidenciaContHandler)
  
-    router.HandleFunc("/Investimentos", InvestimentosPageHandler).Methods("GET")
-    router.HandleFunc("/Investimentos", InvestimentosHandler).Methods("POST")
+    router.HandleFunc("/Investimentos", InvestimentosHandler)
+    router.HandleFunc("/InvestimentosPerfil", InvestimentosPerfilHandler)
+    router.HandleFunc("/InvestimentosRendimento", InvestimentosRendHandler)
 
-    router.HandleFunc("/Custos", CustosPageHandler).Methods("GET")
-    router.HandleFunc("/Custos", CustosHandler).Methods("POST")
+    router.HandleFunc("/Custos", CustosHandler)
  
  
     http.Handle("/", router)
