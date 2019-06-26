@@ -61,92 +61,91 @@ func randomQueries(users *[]Usuario) {
 		time.Sleep(800 * time.Millisecond)
 		s1 := rand.NewSource(time.Now().UnixNano())
 		r1 := rand.New(s1)
-		for i := 0; i < len(*users); i++ {
+		for ii := 0; ii < len(*users); ii++ {
+			fmt.Printf("i = %d\n", ii)
+			fmt.Printf("len = %d\n", len(*users))
+
 			r := r1.Intn(11)
-			uid := i + r
+			uid := ii + r
 			switch r {
 			case 00:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := poupanca(arg1, arg2)
-					fmt.Printf("Simulated 'poupanca' with user_id: %d| result: %f", uid, r)
-				}()
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := poupanca(arg1, arg2)
+				fmt.Printf("Simulated 'poupanca' with user_id: %d| result: %f\n", uid, r)
 				break
 			case 01:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := tesouroPrefixado(arg1, arg2)
-					fmt.Printf("Simulated 'tesouroPrefixado' with user_id: %d| result: %f", uid, r)
-				}()
+
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := tesouroPrefixado(arg1, arg2)
+				fmt.Printf("Simulated 'tesouroPrefixado' with user_id: %d| result: %f\n", uid, r)
 
 				break
 			case 02:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := tesouroSelic(arg1, arg2)
-					fmt.Printf("Simulated 'tesouroSelic' with user_id: %d| result: %f", uid, r)
-				}()
+
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := tesouroSelic(arg1, arg2)
+				fmt.Printf("Simulated 'tesouroSelic' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 03:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := tesouroIPCA(arg1, arg2)
-					fmt.Printf("Simulated 'tesouroIPCA' with user_id: %d| result: %f", uid, r)
-				}()
+
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := tesouroIPCA(arg1, arg2)
+				fmt.Printf("Simulated 'tesouroIPCA' with user_id: %d| result: %f\n", uid, r)
 
 				break
 			case 04:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := CDBeLC(arg1, arg2)
-					fmt.Printf("Simulated 'CDBeLC' with user_id: %d| result: %f", uid, r)
-				}()
+
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := CDBeLC(arg1, arg2)
+				fmt.Printf("Simulated 'CDBeLC' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 05:
-				go func() {
-					arg1 := r1.Float64() * 1000
-					arg2 := r1.Float64() * 100.0
-					r := LCIeLCA(arg1, arg2)
-					fmt.Printf("Simulated 'LCIeLCA' with user_id: %d| result: %f", uid, r)
-				}()
+
+				arg1 := r1.Float64() * 1000
+				arg2 := r1.Float64() * 100.0
+				r := LCIeLCA(arg1, arg2)
+				fmt.Printf("Simulated 'LCIeLCA' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 06:
-				go func() {
-					fmt.Printf("Simulated 'analisePerfil' with user_id: %d|", uid)
-				}()
+
+				fmt.Printf("Simulated 'analisePerfil' with user_id: %d|\n", uid)
+
 				break
 			case 07:
-				go func() {
-					r := CalculadoraAposentadoria((*users)[i])
-					fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f", uid, r)
-				}()
+
+				r := r1.Float64() * 100
+				fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 8:
-				go func() {
-					r := CalculadoraAposentadoria((*users)[i])
-					fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f", uid, r)
-				}()
+
+				r := r1.Float64() * 100
+				fmt.Printf("Simulated 'CalculadoraAposentadoria' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 9:
-				go func() {
-					r := CalculadoraContribuicao((*users)[i])
-					fmt.Printf("Simulated 'CalculadoraContribuicao' with user_id: %d| result: %f", uid, r)
-				}()
+
+				r := r1.Float64() * 100
+				fmt.Printf("Simulated 'CalculadoraContribuicao' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			case 10:
-				go func() {
-					fmt.Println("Simulated 'custos' with user_id: %d| result: %f", uid, r)
-				}()
+
+				fmt.Printf("Simulated 'custos' with user_id: %d| result: %f\n", uid, r)
+
 				break
 			default:
-				go func() {
-					fmt.Println("Simulation failed with user_id: ", uid)
-				}()
+
+				fmt.Printf("Simulation failed with user_id: \n", uid)
+
 				break
 
 			}
